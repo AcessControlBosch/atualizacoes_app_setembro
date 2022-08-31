@@ -71,6 +71,7 @@ export default {
         if(this.dataUser[increment].EDV == this.user.username){
 
           this.$store.dispatch("SET_USER", this.dataUser[increment]);
+          console.log(this.$store.state.usuario)
           break;
           
         }
@@ -107,12 +108,11 @@ export default {
           
           "local", {data: this.user})
           .then((response) => {
+            
             this.searchUser();
 
             console.log("response",response)
             console.log("Usuário Logado")
-
-            
 
         }).catch((response) =>{
 

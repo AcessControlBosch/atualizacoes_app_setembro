@@ -36,6 +36,7 @@
 <script>
 import { QrcodeStream } from 'vue-qrcode-reader'
 export default {
+  middleware:  'auth',
   data(){
     return{
       error:'',

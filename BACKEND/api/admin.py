@@ -10,7 +10,7 @@ class detReleaseMachine(admin.ModelAdmin):
 admin.site.register(ReleaseMachine, detReleaseMachine)
 
 class detUser(admin.ModelAdmin):
-    list_display = ('id', 'name', 'EDV', 'skill')
+    list_display = ('id', 'name', 'EDV', 'skill', 'admin')
     list_display_links = ('id',)
     search_fields = ('EDV',)
     list_per_page = 10

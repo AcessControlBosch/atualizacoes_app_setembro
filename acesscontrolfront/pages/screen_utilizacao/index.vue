@@ -37,7 +37,52 @@
 export default {
 
   middleware: 'auth',
-  name: 'screen_utilizacao'
+  name: 'screen_utilizacao',
+
+  beforeCreate() {
+
+    console.log("beforeCreate")
+
+    this.id = this.$store.state.usuario.id;
+
+    console.log(this.id)
+
+     this.$axios.get('http://localhost:8000/users/').then((response) =>{
+      
+      this.responseData = response.data;
+
+      let increment = 0;
+
+      for(increment; increment < this.responseData.length; increment++){
+
+        if(this.responseData[increment].id == this.id){
+
+          console.log("achou")
+          break;
+
+        }
+
+      }
+
+
+    }).catch(error =>{
+      console.log(error)
+    })
+
+  },
+
+  data(){
+
+    
+
+    return{
+
+     responseData: [],
+     id: 0
+
+    }
+
+  }
 
 }
 
