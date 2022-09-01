@@ -62,16 +62,14 @@ export default {
     //funcao para setar usuário
     setUser: async function(){
 
-      console.log(this.dataUser);
-
       let increment = 0;
 
       for(increment; increment < this.dataUser.length; increment++){
 
         if(this.dataUser[increment].EDV == this.user.username){
 
-          this.$store.dispatch("SET_USER", this.dataUser[increment]);
-          console.log(this.$store.state.usuario)
+          await this.$store.dispatch("SET_USER", this.dataUser[increment]);
+          console.log(this.$store.state.usuario.name)
           break;
           
         }
@@ -83,9 +81,7 @@ export default {
     //funcao para buscar usuarios
     searchUser: async function(){
 
-        this.$axios.get(this.$store.state.BASE_URL + "/users").then((response) =>{
-
-          //console.log("Encontrou os dados")
+        await this.$axios.get(this.$store.state.BASE_URL + "/users").then((response) =>{
 
           this.dataUser = response.data;
 
@@ -111,12 +107,12 @@ export default {
             
             this.searchUser();
 
-            console.log("response",response)
             console.log("Usuário Logado")
 
         }).catch((response) =>{
 
           console.log('response',response)
+          alert("Login Incorreto!")
 
         })
 

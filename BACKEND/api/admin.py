@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 
 class detReleaseMachine(admin.ModelAdmin):
-    list_display = ('id', 'date', 'hourInitial', 'hourFinish', 'idMachineFK','idAssociateFK')
+    list_display = ('id', 'date', 'hour',  'hourFinish', 'idMachineFK','idAssociateFK')
     list_display_links = ('id',)
     search_fields = ('idMachineFK','idAssociateFK',)
     list_per_page = 10
@@ -10,7 +10,7 @@ class detReleaseMachine(admin.ModelAdmin):
 admin.site.register(ReleaseMachine, detReleaseMachine)
 
 class detUser(admin.ModelAdmin):
-    list_display = ('id', 'name', 'EDV', 'skill', 'admin')
+    list_display = ('id', 'name', 'EDV', 'id_card', 'skill', 'adminU')
     list_display_links = ('id',)
     search_fields = ('EDV',)
     list_per_page = 10
@@ -42,7 +42,7 @@ class detAssociate(admin.ModelAdmin):
 admin.site.register(Associate, detAssociate)
 
 class detMachine(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'status', 'ipaddress')
+    list_display = ('id', 'name', 'description', 'status', 'ipaddress', 'statusMaint')
     list_display_links = ('id',)
     search_fields = ('name',)
     list_per_page = 10

@@ -1,4 +1,3 @@
-from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -17,7 +16,7 @@ class User(models.Model):
     EDV = models.CharField(max_length=10)
     id_card = models.CharField(max_length=30, null=True, blank= True, default=0)
     skill = models.BooleanField(default=False)
-    admin = models.BooleanField(default=False)
+    adminU = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -62,6 +61,7 @@ class Machine(models.Model):
     description = models.CharField(max_length=200)
     status = models.BooleanField()
     ipaddress = models.CharField(max_length=20)
+    statusMaint= models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -106,8 +106,8 @@ class ReleaseMachine(models.Model):
     # permission_classes = (IsAuthenticated,)
 
     date = models.DateField()
-    hourInitial = models.TimeField()
-    hourFinish = models.TimeField(default='')
+    hour = models.TimeField()
+    hourFinish = models.TimeField()
     idMachineFK = models.ForeignKey(Machine, related_name="machineReleaseMachine", on_delete=models.CASCADE)
     idAssociateFK = models.ForeignKey(User, related_name="userReleaseMachine", on_delete=models.CASCADE)
 
@@ -123,7 +123,7 @@ class Observation(models.Model):
     # permission_classes = (IsAuthenticated,)
 
     date = models.DateField()
-    hour = models.TimeField()
+    hour = models.TimeField() # default='', blank=True, null=True
     idMachineFK = models.ForeignKey(Machine, related_name="machineObservation", on_delete=models.CASCADE)
     idAssociateFK = models.ForeignKey(User, related_name="userObservation", on_delete=models.CASCADE)
 

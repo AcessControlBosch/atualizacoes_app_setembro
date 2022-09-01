@@ -8,7 +8,7 @@
 
             <img src="../static/logo.svg" />
 
-            <button v-on:click="$auth.logout()"><i class="pi pi-sign-out"></i></button>
+            <button v-on:click="logout()"><i class="pi pi-sign-out"></i></button>
 
         </div>
 
@@ -18,7 +18,24 @@
 
 <script>
 export default {
-  name: 'HeaderWithLogout'
+  name: 'HeaderWithLogout',
+
+    methods: {
+        
+        logout: function(){
+
+            console.log(this.$store.state.usuario.name)
+            this.$store.dispatch("SET_USER", {});
+            console.log(this.$store.state.usuario.name)
+            this.$auth.logout()
+
+        }
+
+
+
+    },
+
+
 }
 </script>
 

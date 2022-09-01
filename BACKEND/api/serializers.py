@@ -2,14 +2,31 @@ from rest_framework import serializers
 from .models import *
 
 class UserTable(serializers.ModelSerializer):
+
     class Meta: 
         many = True
         model = User
-        fields = '__all__' 
+        fields = '__all__'  
+
+class CoursesTable(serializers.ModelSerializer):
+
+    class Meta: 
+        many = True
+        model = Courses
+        fields = '__all__'
+
+class CoursesNameTable(serializers.ModelSerializer):
+
+    class Meta: 
+        many = True
+        model = Courses
+        fields = ['name']
 
 class ApprenticeTable(serializers.ModelSerializer):
 
     idApprenticeFK = UserTable(read_only=True)
+    course = CoursesNameTable(read_only=True)
+
     class Meta: 
         many = True
         model = Apprentice
@@ -96,13 +113,6 @@ class MaintenanceOrderTable(serializers.ModelSerializer):
     class Meta: 
         many = True
         model = MaintenanceOrder
-        fields = '__all__'
-
-class CoursesTable(serializers.ModelSerializer):
-
-    class Meta: 
-        many = True
-        model = Courses
         fields = '__all__'
 
 class AreasTable(serializers.ModelSerializer):

@@ -18,7 +18,7 @@ class UserAPI(APIView):
 
         elif 'user' in request.GET:
             currentlyUser = request.GET['user']
-            users = Users.objects.filter(idUser=currentlyUser)
+            users = User.objects.filter(idUser=currentlyUser)
             serializer = UserTable(users, many=True)
             return Response(serializer.data)
 
@@ -28,7 +28,7 @@ class UserAPI(APIView):
             return Response(serializer.data)
 
         else:
-            users = User.objects.get(id=pk)
+            users = User.objects.get(id_card=pk)
             serializer = UserTable(users)
             return Response(serializer.data)
 
@@ -55,7 +55,7 @@ class UserAPI(APIView):
 
 class ApprenticeAPI(APIView):
 
-    def get(self, request, pk=''):
+    def get(self, request, pk="", idApprenticeEFK = '', name=''):
 
         if 'name' in request.GET:
             currentlyName = request.GET['name']
@@ -63,8 +63,8 @@ class ApprenticeAPI(APIView):
             serializer = ApprenticeTable(apprentice, many=True)
             return Response(serializer.data)
 
-        elif 'pk' in request.GET:
-            currentlyID = request.GET['pk']
+        elif 'idApprenticeEFK' in request.GET:
+            currentlyID = request.GET['idApprenticeFK']
             apprentice = Apprentice.objects.filter(name__contains=currentlyID)
             serializer = ApprenticeTable(apprentice, many=True)
             return Response(serializer.data)
@@ -75,7 +75,7 @@ class ApprenticeAPI(APIView):
             return Response(serializer.data)
 
         else:
-            apprentice = User.objects.get(id=pk)
+            apprentice = Apprentice.objects.get(id=pk)
             serializer = ApprenticeTable(apprentice)
             return Response(serializer.data)
             
@@ -206,6 +206,8 @@ class MachineAPI(APIView):
         machineResult = Machine.objects.get(id=pk)       
         machineResult.delete()
         return Response({"msg": "Apagado com sucesso"})
+
+
 
 class QuestionAPI(APIView):
 
@@ -490,7 +492,6 @@ class MaintenanceOrderAPI(APIView):
         MaintenanceOrderTableResult = MaintenanceOrder.objects.get(id=pk)       
         MaintenanceOrderTableResult.delete()
         return Response({"msg": "Apagado com sucesso"})
-
 
 class AreaAPI(APIView):
 
