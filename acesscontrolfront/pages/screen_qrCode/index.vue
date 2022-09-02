@@ -42,13 +42,16 @@ export default {
       error:'',
       decodedString:'',
       torch: true,
-      valueQrCode:[]
+      valueQrCode:[],
+      responseMachine: []
     }
   },
   components:{
     QrcodeStream
   },
+
   methods: {
+
     async onInit( promise ){
       try {
       
@@ -79,8 +82,49 @@ export default {
       console.log('-----QR CODE onDecode-----');
       console.log('onDecode', decodedString);
       await this.$store.dispatch("setidmachine", decodedString);
-      this.$router.push('/screen_home');
+
+      this.verifyMachine();
+
+    },
+
+    verifyMachine: function(){
+
+      this.$axios.get(this.$store.state.BASE_URL + '/machines/').then((response) => {
+
+        this.responseMachine = response.data;
+
+        let increment = 0;
+
+        for(increment; increment < this.responseMachine.length; increment++) {
+
+          if(this.responseMachine[increment].id === this.$store.state.idmachine){
+
+              if(this.responseMachine[increment].statusMaint === true){
+
+                alert("Máquina em manutenção")
+                this.$auth.logout();     
+
+
+              } else {
+
+                this.$router.push('/screen_home');
+
+              }
+
+
+          }
+
+        }
+
+      }).catch(error => {
+        console.log(error)
+      })
+
+
     }
+
+
+
 }
 }
 </script> 

@@ -69,7 +69,11 @@ export default {
         if(this.dataUser[increment].EDV == this.user.username){
 
           await this.$store.dispatch("SET_USER", this.dataUser[increment]);
-          console.log(this.$store.state.usuario.name)
+          
+          if(this.dataUser[increment].adminU === true){
+            this.$store.dispatch("SET_ADMIN", true);
+          }
+
           break;
           
         }

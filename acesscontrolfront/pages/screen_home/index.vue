@@ -31,13 +31,16 @@
 
 <script>
 export default {
+
     middleware: 'auth',
     name: 'screen_home',
+
     data(){
         return{
             ipAddress : '',
         }
     },
+
      mounted(){
         
         console.log("IP DA MÁQUINA:" + this.$store.state.idmachine);

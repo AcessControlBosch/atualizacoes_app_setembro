@@ -24,17 +24,12 @@ export default {
         
         logout: function(){
 
-            console.log(this.$store.state.usuario.name)
             this.$store.dispatch("SET_USER", {});
-            console.log(this.$store.state.usuario.name)
             this.$auth.logout()
 
         }
 
-
-
     },
-
 
 }
 </script>

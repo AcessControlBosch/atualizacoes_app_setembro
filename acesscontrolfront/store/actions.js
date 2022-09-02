@@ -39,5 +39,10 @@ export default {
         console.log("MODAL_ENVIROMENT:" + payload);
         context.commit("MODALENVIROMENT", payload);
     },
+
+    SET_ADMIN(context, payload){
+        console.log("ADMIN:" + payload);
+        context.commit("ADMIN", payload);
+    },
     
 }

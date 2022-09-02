@@ -39,6 +39,53 @@ export default {
   middleware: 'auth',
   name: 'screen_utilizacao',
 
+  beforeCreate() {
+
+    console.log(this.$store.state.admin);
+
+    if(this.$store.state.admin === true){
+
+      this.$router.push('/screen_admin');
+
+    } else {
+
+    this.$axios.get(this.$store.state.BASE_URL + '/users/').then((response) =>{
+      
+      this.responseData = response.data;
+
+      let increment = 0;
+      
+      for(increment; increment < this.responseData.length; increment++) {
+
+        if(this.responseData[increment].id == this.$store.state.usuario.id){
+
+          if(this.responseData[increment].skill == false){
+            
+            this.$auth.logout()
+            alert("Não possui habilidade")
+            this.$store.dispatch("SET_USER", {});
+            break
+
+          } else {
+
+            alert("Possui habilidade")
+
+          }
+
+          break
+
+        }
+
+      }
+
+    }).catch((error)=>{
+      console.log(error)
+    })
+
+    }
+
+  },
+
   data(){
 
     return{

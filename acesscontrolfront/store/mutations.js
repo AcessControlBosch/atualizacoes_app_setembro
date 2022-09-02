@@ -31,6 +31,10 @@ export default {
     
     MODALENVIROMENT(state, payload){
         state.modalEnviroment = payload;
+    },
+
+    ADMIN(state, payload){
+        state.admin = payload;
     }
 
 }
