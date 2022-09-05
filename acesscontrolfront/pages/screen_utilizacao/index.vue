@@ -68,7 +68,7 @@ export default {
 
           } else {
 
-            alert("Possui habilidade")
+            //alert("Possui habilidade")
 
           }
 

@@ -44,5 +44,10 @@ export default {
         console.log("ADMIN:" + payload);
         context.commit("ADMIN", payload);
     },
+
+    SET_MACHINE_UPDATE(context, payload){
+        console.log("ADMIN:" + payload);
+        context.commit("ADMIN", payload);
+    },
     
 }

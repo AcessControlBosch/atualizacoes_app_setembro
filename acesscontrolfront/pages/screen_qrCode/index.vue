@@ -34,6 +34,7 @@
 </template>
 
 <script>
+
 import { QrcodeStream } from 'vue-qrcode-reader'
 export default {
   middleware:  'auth',
@@ -79,53 +80,15 @@ export default {
   
     },
     async onDecode(decodedString){
+
       console.log('-----QR CODE onDecode-----');
       console.log('onDecode', decodedString);
       await this.$store.dispatch("setidmachine", decodedString);
-
-      this.verifyMachine();
+      this.$router.push('/screen_home');
 
     },
 
-    verifyMachine: function(){
-
-      this.$axios.get(this.$store.state.BASE_URL + '/machines/').then((response) => {
-
-        this.responseMachine = response.data;
-
-        let increment = 0;
-
-        for(increment; increment < this.responseMachine.length; increment++) {
-
-          if(this.responseMachine[increment].id === this.$store.state.idmachine){
-
-              if(this.responseMachine[increment].statusMaint === true){
-
-                alert("Máquina em manutenção")
-                this.$auth.logout();     
-
-
-              } else {
-
-                this.$router.push('/screen_home');
-
-              }
-
-
-          }
-
-        }
-
-      }).catch(error => {
-        console.log(error)
-      })
-
-
-    }
-
-
-
-}
+  }
 }
 </script> 
 

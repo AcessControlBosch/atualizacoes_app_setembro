@@ -1,6 +1,11 @@
 <template>
 
-  <h1>ADMIN</h1>
+  <div>
+
+    <HeaderWithLogout />
+    <h1>ADMIN</h1>
+
+  </div>
 
 </template>
 

@@ -164,6 +164,9 @@ export default {
                 let seg = date.getSeconds();
 
                 let fullHour = hour + ":" + min + ":" + seg;
+                let hourFinish = "00:00:00"
+
+                fullHour.toString(); 
 
                 console.log(fullDate)
                 console.log(fullHour)
@@ -172,15 +175,19 @@ export default {
 
                 let body = [{
                     date: fullDate,
-                    hourInitial: fullHour,
-                    hourFinish: '',
+                    hour: fullHour,
+                    hourFinish: hourFinish,
                     idMachineFK: this.$store.state.idmachine,
                     idAssociateFK: this.$store.state.usuario.id,
                 }]
 
-                console.log(body)
-
-                this.showModalReleasedBar();
+                let bodyMachine = [{
+                    name: this.$store.state.machine.name,
+                    description: this.$store.state.machine.description,
+                    status: true,
+                    ipaddress: this.$store.state.machine.ipaddress,
+                    statusMaint: this.$store.state.machine.statusMaint
+                }]
                 
                 this.$axios.post(this.$store.state.BASE_URL + "/releasemachines/", body).then((response) => {
                     
@@ -189,6 +196,18 @@ export default {
                 }).catch((error) => {
                     console.log(error)
                 })
+
+
+                this.$axios.put(this.$store.state.BASE_URL + "/releasemachines/" + this.$store.state.idmachine, bodyMachine).then((response) => {
+
+                    alert("Alterado com sucesso")
+
+
+                }).catch((error) => {
+                    console.log(error);
+                })
+
+                this.showModalReleasedBar();
             
             }
 

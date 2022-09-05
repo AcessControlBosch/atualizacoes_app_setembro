@@ -41,7 +41,31 @@ export default {
         }
     },
 
-     mounted(){
+    beforeCreate() {
+        
+        this.$axios.get(this.$store.state.BASE_URL + '/machines/' + this.$store.state.idmachine).then((response) => {
+
+        this.responseMachine = response.data;
+
+        if(this.responseMachine.statusMaint === true){
+
+            alert("Está máquina está em manutenção!")
+            this.$auth.logout();
+        
+        } else {
+
+            console.log("Em uso!")
+
+        }
+
+      }).catch(error => {
+        console.log(error)
+      })
+
+
+    },
+
+    mounted(){
         
         console.log("IP DA MÁQUINA:" + this.$store.state.idmachine);
 
@@ -49,11 +73,7 @@ export default {
             
             console.log(response)
           
-            this.ipAddress = response.data.ipaddress;
-
-            console.log("IP DA MÁQUINA: " + this.ipAddress)
-            console.log("ID DA MÁQUINA: " + this.$store.state.idmachine)
-    
+            this.ipAddress = response.data.ipaddress;    
             //this.$store.dispatch("setidmachine", this.idMachine);
 
 

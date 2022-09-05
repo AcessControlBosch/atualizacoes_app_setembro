@@ -35,6 +35,10 @@ export default {
 
     ADMIN(state, payload){
         state.admin = payload;
+    },
+
+    UPDATEMACHINE(state, payload){
+        state.machine = payload;
     }
 
 }
