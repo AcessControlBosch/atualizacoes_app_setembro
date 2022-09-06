@@ -1,0 +1,53 @@
+.content-card{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .card{
+        background-color: aqua;
+        width: 40%;
+        margin-bottom: 15px;
+
+        .title-card{
+            width: 100%;
+            padding: 5px;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--DarkBlue);
+
+            p{
+                font-family: "Bosch_Sans_Bold";
+                color: white;
+            }
+
+        }
+
+        .title-info-card{
+            width: 100%;
+            background-color: var(--LightBlue);
+
+            p{
+                padding: 5px;
+                font-family: "Bosch_Sans_Bold";
+                color: black;
+            }
+
+        }
+
+        .information-card{
+            padding: 5px;
+            background-color: var(--LightBlue);
+
+            p{
+                font-family: "Bosch_Sans_Bold";
+                color: white;  
+                font-size: 14px;
+
+            }
+
+
+        }
+    }
+}
+

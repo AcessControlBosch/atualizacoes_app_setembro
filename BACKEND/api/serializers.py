@@ -80,7 +80,16 @@ class MaintenanceTable(serializers.ModelSerializer):
         fields = '__all__'
 
 class ReleaseMachineTable(serializers.ModelSerializer):
+    class Meta: 
+        many = True
+        model = ReleaseMachine
+        fields = '__all__'
 
+class GetReleaseMachineTable(serializers.ModelSerializer):
+
+    idMachineFK = MachineTable(read_only=True)
+    idAssociateFK = UserTable(read_only=True)
+    
     class Meta: 
         many = True
         model = ReleaseMachine

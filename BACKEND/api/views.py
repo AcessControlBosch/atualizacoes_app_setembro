@@ -356,12 +356,12 @@ class ReleaseMachineAPI(APIView):
 
         if pk == '':
             releaseMachineTableResult = ReleaseMachine.objects.all()
-            serializer = ReleaseMachineTable(releaseMachineTableResult, many=True)
+            serializer = GetReleaseMachineTable(releaseMachineTableResult, many=True)
             return Response(serializer.data)
 
         else:
             releaseMachineTableResult = ReleaseMachine.objects.get(id=pk)
-            serializer = ReleaseMachineTable(releaseMachineTableResult)
+            serializer = GetReleaseMachineTable(releaseMachineTableResult)
             return Response(serializer.data)
 
     def post(self, request):

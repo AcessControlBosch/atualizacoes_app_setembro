@@ -2,7 +2,7 @@
     <div class="container">
     
         <HeaderWithLogout />
-        <button v-on:click="redirect()"> Home </button>
+        <!-- <button v-on:click="redirect()"> Home </button> -->
 
         <div class="content">
 
@@ -54,11 +54,11 @@ export default {
 
   methods: {
 
-    redirect: function(){
+    // redirect: function(){
 
-      this.$router.push('/screen_home');
+    //   this.$router.push('/screen_home');
 
-    },
+    // },
 
     async onInit( promise ){
       try {
