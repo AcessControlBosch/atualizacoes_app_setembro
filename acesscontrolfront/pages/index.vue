@@ -111,7 +111,7 @@ export default {
             
             this.searchUser();
 
-            console.log("Usuário Logado")
+            //console.log("Usuário Logado")
 
         }).catch((response) =>{
 

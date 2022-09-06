@@ -85,15 +85,15 @@ export default {
 
         this.path = this.$store.state.BASE_URL + '/greenbooks/' + this.$store.state.idmachine + '/1';
 
-        console.log(this.path);
+        //console.log(this.path);
          
         this.$axios.get(this.path).then((response) => {
 
-            console.log('oi created')
+           // console.log('oi created')
 
             this.allQuestions = response.data;
 
-            console.log(this.allQuestions)
+           // console.log(this.allQuestions)
 
             let i = 0;
 
@@ -103,7 +103,8 @@ export default {
                 this.idQuestion.push(i+1);
 
             }
-            console.log('this.idQuestion',this.idQuestion)
+
+           // console.log('this.idQuestion',this.idQuestion)
 
         }).catch((error) => {
 
@@ -168,10 +169,10 @@ export default {
 
                 fullHour.toString(); 
 
-                console.log(fullDate)
-                console.log(fullHour)
+                //console.log(fullDate)
+                //console.log(fullHour)
 
-                console.log(this.$store.state.usuario.id)
+                //console.log(this.$store.state.usuario.id)
 
                 let body = [{
                     date: fullDate,
@@ -181,24 +182,24 @@ export default {
                     idAssociateFK: this.$store.state.usuario.id,
                 }]
 
-                let bodyMachine = [{
+                let bodyMachine = {
                     name: this.$store.state.machine.name,
                     description: this.$store.state.machine.description,
-                    status: true,
+                    status: false,
                     ipaddress: this.$store.state.machine.ipaddress,
                     statusMaint: this.$store.state.machine.statusMaint
-                }]
+                }
                 
-                this.$axios.post(this.$store.state.BASE_URL + "/releasemachines/", body).then((response) => {
+                // this.$axios.post(this.$store.state.BASE_URL + "/releasemachines/", body).then((response) => {
                     
-                    alert("Registro Salvo com sucesso")
+                //     alert("Registro Salvo com sucesso")
 
-                }).catch((error) => {
-                    console.log(error)
-                })
+                // }).catch((error) => {
+                //     console.log(error)
+                // })
 
 
-                this.$axios.put(this.$store.state.BASE_URL + "/releasemachines/" + this.$store.state.idmachine, bodyMachine).then((response) => {
+                this.$axios.put(this.$store.state.BASE_URL + "/machines/" + this.$store.state.idmachine + "/", bodyMachine).then((response) => {
 
                     alert("Alterado com sucesso")
 

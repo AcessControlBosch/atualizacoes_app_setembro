@@ -2,6 +2,7 @@
     <div class="container">
     
         <HeaderWithLogout />
+        <button v-on:click="redirect()"> Home </button>
 
         <div class="content">
 
@@ -53,12 +54,18 @@ export default {
 
   methods: {
 
+    redirect: function(){
+
+      this.$router.push('/screen_home');
+
+    },
+
     async onInit( promise ){
       try {
       
       const { capabilities } = await promise
-      console.log('-----QR CODE -----')
-      console.log(this.decodedString)
+      //console.log('-----QR CODE -----')
+      //console.log(this.decodedString)
       // successfully initialized
     } catch (error) {
       if (error.name === 'NotAllowedError') {
@@ -81,8 +88,8 @@ export default {
     },
     async onDecode(decodedString){
 
-      console.log('-----QR CODE onDecode-----');
-      console.log('onDecode', decodedString);
+      //console.log('-----QR CODE onDecode-----');
+      //console.log('onDecode', decodedString);
       await this.$store.dispatch("setidmachine", decodedString);
       this.$router.push('/screen_home');
 

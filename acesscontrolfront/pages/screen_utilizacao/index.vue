@@ -41,7 +41,7 @@ export default {
 
   beforeCreate() {
 
-    console.log(this.$store.state.admin);
+    //console.log(this.$store.state.admin);
 
     if(this.$store.state.admin === true){
 

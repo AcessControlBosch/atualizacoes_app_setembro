@@ -17,7 +17,7 @@
                     <p class="tipo">Liberar Máquina</p>
                     <i class="pi pi-lock"></i>
                 </button>
-                <button class="button-function">
+                <button class="button-function" v-on:click="$router.push('/screen_registros')">
                     <p class="tipo">Registros</p>
                     <i class="pi pi-list" id="pi-reg"><i class="pi pi-pencil" id="pi-list"></i></i>
                 </button>
@@ -46,6 +46,7 @@ export default {
         this.$axios.get(this.$store.state.BASE_URL + '/machines/' + this.$store.state.idmachine).then((response) => {
 
         this.responseMachine = response.data;
+        //console.log(this.responseMachine)
 
         if(this.responseMachine.statusMaint === true){
 
@@ -54,8 +55,8 @@ export default {
         
         } else {
 
-            console.log("Em uso!")
-
+            this.$store.dispatch("SET_MACHINE_UPDATE", this.responseMachine);
+            
         }
 
       }).catch(error => {
@@ -67,11 +68,9 @@ export default {
 
     mounted(){
         
-        console.log("IP DA MÁQUINA:" + this.$store.state.idmachine);
+       // console.log("IP DA MÁQUINA:" + this.$store.state.idmachine);
 
          this.$axios.get(this.$store.state.BASE_URL + '/machines/' + this.$store.state.idmachine).then((response) => {
-            
-            console.log(response)
           
             this.ipAddress = response.data.ipaddress;    
             //this.$store.dispatch("setidmachine", this.idMachine);
@@ -85,8 +84,8 @@ export default {
     methods: {
         
         teste: function(){
-            console.log(this.$store.state.ipAddressMachine);
-            console.log(this.$store.state.idmachine);
+            //console.log(this.$store.state.ipAddressMachine);
+            //console.log(this.$store.state.idmachine);
         }
 
 
