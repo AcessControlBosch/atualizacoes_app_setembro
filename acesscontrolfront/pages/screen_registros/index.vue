@@ -11,37 +11,39 @@
         </div>
 
         <div class="row-inferior">
-        
-        <div v-for="(register, id) in registerMachine.reverse()" :key="id" class="content-card">
 
-            <div class="card">
-            
-                <div class="title-card">
-                    <p>{{register.idAssociateFK.name}}</p>
+            <div class="content-table">
+
+                <div class="index-table">
+
+                    <table class="table-register">
+
+                        <tr class="tr-register">
+
+                            <th class="th-register">Name</th>
+                            <th class="th-register">Date</th>
+                            <th class="th-register">Hour</th>
+
+                        </tr>
+
+                        <tr v-for="(register, id) in registerMachine.reverse()" :key="id" class="tr-register">
+                           <td class="td-register">{{register.idAssociateFK.name}}</td> 
+                           <td class="td-register">{{register.date}}</td>
+                           <td class="td-register">{{register.hour}}</td>  
+                        </tr>
+
+
+                    </table>
+                    
                 </div>
 
-                <div class="title-info-card">
-                    <p>Dados do Colaborador:</p>
-                </div>
-
-                <div class="information-card">
-                    <p>Nome: {{register.idAssociateFK.name}}</p>
-                    <p>EDV: {{register.idAssociateFK.EDV}}</p>
-                </div>
-
-                <div class="title-info-card">
-                    <p>Dados da utilização:</p>
-                </div>
-
-                <div class="information-card">
-                    <p>Horário Inicial: {{register.hour}}</p>
-                    <p>Horário Final: {{register.hourFinish}}</p>
-                    <p>Data de utilização: {{register.date}}</p>
-                </div>
-            
             </div>
+
+
         
-        </div>
+        <!-- <div v-for="(register, id) in registerMachine.reverse()" :key="id" class="content-card"> -->
+        
+        <!-- </div> -->
 
         </div>
 

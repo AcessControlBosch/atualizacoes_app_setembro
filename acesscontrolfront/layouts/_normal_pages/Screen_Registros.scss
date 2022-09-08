@@ -1,53 +1,41 @@
-.content-card{
-    width: 100%;
+.content-table{
     display: flex;
-    align-items: center;
+    width: 100%;
     justify-content: center;
+    align-items: center;
 
-    .card{
-        background-color: aqua;
-        width: 40%;
-        margin-bottom: 15px;
+    .index-table{
+        // background-color: blue;
+        width: 60%;
+        align-items: center;
+        justify-content: center;
 
-        .title-card{
+        .table-register{
             width: 100%;
-            padding: 5px;
-            justify-content: center;
-            text-align: center;
-            background-color: var(--DarkBlue);
+            height: auto;
+            border-collapse: collapse;
 
-            p{
-                font-family: "Bosch_Sans_Bold";
-                color: white;
+            .td-register, .th-register{
+                border: 1px solid #ddd;
+                padding: 8px;
             }
+
+            .th-register{
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: var(--green);
+                color: white; 
+            }
+
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            #customers tr:hover {background-color: #ddd;}
 
         }
 
-        .title-info-card{
-            width: 100%;
-            background-color: var(--LightBlue);
-
-            p{
-                padding: 5px;
-                font-family: "Bosch_Sans_Bold";
-                color: black;
-            }
-
-        }
-
-        .information-card{
-            padding: 5px;
-            background-color: var(--LightBlue);
-
-            p{
-                font-family: "Bosch_Sans_Bold";
-                color: white;  
-                font-size: 14px;
-
-            }
 
 
-        }
     }
-}
 
+}
