@@ -74,6 +74,16 @@ export default {
             this.$store.dispatch("SET_ADMIN", true);
           }
 
+          if(this.dataUser[increment].skill === true){
+
+            this.$store.dispatch("SET_SKILL", true);
+          
+          } else {
+
+            this.$store.dispatch("SET_SKILL", false);
+            
+          }
+
           break;
           
         }

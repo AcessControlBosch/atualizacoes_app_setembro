@@ -37,6 +37,11 @@ export default {
         state.admin = payload;
     },
 
+    SKILL(state, payload){
+        state.skill = payload;
+    },
+
+
     UPDATEMACHINE(state, payload){
         state.machine = payload;
     }

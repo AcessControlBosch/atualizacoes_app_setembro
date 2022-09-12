@@ -8,7 +8,7 @@
 
             <img src="../static/logo.svg" />
 
-            <button v-on:click="logout()"><i class="pi pi-sign-out"></i></button>
+            <button v-on:click="$router.push('/screen_home')"><i class="pi pi-home"></i></button>
 
         </div>
 
@@ -18,19 +18,7 @@
 
 <script>
 export default {
-  name: 'HeaderWithLogout',
-
-    methods: {
-        
-        logout: async function(){
-
-            await this.$store.dispatch("SET_USER", {});
-            this.$auth.logout()
-
-        }
-
-    },
-
+  name: 'HeaderWithPathHome'
 }
 </script>
 

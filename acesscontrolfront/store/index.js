@@ -9,6 +9,7 @@ export const state = () => ({
     modalSecurity:  false,
     modalEnviroment:  false,
     admin: false,
+    skill: false,
 
     BASE_URL: "http://localhost:8000"
     

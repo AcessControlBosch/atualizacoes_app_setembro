@@ -2,7 +2,7 @@
 
     <div class="container">
 
-        <HeaderWithLogout />
+        <HeaderWithPathHome />
 
         <div class="row-superior">
 

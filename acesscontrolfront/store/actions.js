@@ -45,6 +45,11 @@ export default {
         context.commit("ADMIN", payload);
     },
 
+    SET_SKILL(context, payload){
+        console.log("SKILL:" + payload);
+        context.commit("SKILL", payload);
+    },
+
     SET_MACHINE_UPDATE(context, payload){
         console.log("MACHINE_UPDATE:" + payload);
         context.commit("UPDATEMACHINE", payload);
