@@ -48,7 +48,7 @@ export default {
   }
 },
   created(){
-    console.log()
+    
     this.$axios.get(this.$store.state.BASE_URL + "/areas").then((response) =>{
 
       this.dataArea = response.data;

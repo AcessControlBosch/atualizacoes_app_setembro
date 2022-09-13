@@ -128,6 +128,12 @@ export default {
 
         },
 
+        redirectStandby: function(){
+
+            this.$router.push('/screen_standby');
+
+        },
+
         verifyQuestions: function(){
 
             let qNotMarked  = [];
@@ -185,23 +191,23 @@ export default {
                 let bodyMachine = {
                     name: this.$store.state.machine.name,
                     description: this.$store.state.machine.description,
-                    status: false,
+                    status: true,
                     ipaddress: this.$store.state.machine.ipaddress,
                     statusMaint: this.$store.state.machine.statusMaint
                 }
                 
-                // this.$axios.post(this.$store.state.BASE_URL + "/releasemachines/", body).then((response) => {
+                this.$axios.post(this.$store.state.BASE_URL + "/releasemachines/", body).then((response) => {
                     
-                //     alert("Registro Salvo com sucesso")
+                    //alert("Registro Salvo com sucesso")
 
-                // }).catch((error) => {
-                //     console.log(error)
-                // })
+                }).catch((error) => {
+                    console.log(error)
+                })
 
 
                 this.$axios.put(this.$store.state.BASE_URL + "/machines/" + this.$store.state.idmachine + "/", bodyMachine).then((response) => {
 
-                    alert("Alterado com sucesso")
+                    //alert("Alterado com sucesso")
 
 
                 }).catch((error) => {
@@ -209,6 +215,10 @@ export default {
                 })
 
                 this.showModalReleasedBar();
+                
+                setTimeout(() => {
+                    this.redirectStandby();
+                }, 3000);
             
             }
 

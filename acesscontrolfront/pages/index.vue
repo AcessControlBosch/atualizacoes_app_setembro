@@ -59,6 +59,10 @@ export default {
 
   methods: {
 
+    printUser: function(){
+      console.log(this.$store.state.usuario)
+    },
+
     //funcao para setar usuário
     setUser: async function(){
 

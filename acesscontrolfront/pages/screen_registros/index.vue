@@ -20,16 +20,16 @@
 
                         <tr class="tr-register">
 
-                            <th class="th-register">Name</th>
-                            <th class="th-register">Date</th>
-                            <th class="th-register">Hour</th>
+                            <th class="th-register"><p class="title-table">Name</p></th>
+                            <th class="th-register"><p class="title-table">Date</p></th>
+                            <th class="th-register"><p class="title-table">Hour</p></th>
 
                         </tr>
 
                         <tr v-for="(register, id) in registerMachine.reverse()" :key="id" class="tr-register">
-                           <td class="td-register">{{register.idAssociateFK.name}}</td> 
-                           <td class="td-register">{{register.date}}</td>
-                           <td class="td-register">{{register.hour}}</td>  
+                           <td class="td-register"><p class="text-table ">{{register.idAssociateFK.name}}</p></td> 
+                           <td class="td-register"><p class="text-table text-align-center">{{register.date}}</p></td>
+                           <td class="td-register"><p class="text-table text-align-center">{{register.hour}}</p></td>  
                         </tr>
 
 
@@ -99,7 +99,7 @@ export default{
 
 <style lang="scss" scoped>
 
-    @import "@/layouts/_responsividade/responsividade_grid.scss";
+    @import "@/layouts/_responsividade/responsividade_grid.scss"; 
     @import "@/layouts/_normal_pages/Screen_Registros.scss";
 
 </style>
