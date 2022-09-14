@@ -107,7 +107,7 @@ class ReleaseMachine(models.Model):
 
     date = models.DateField()
     hour = models.TimeField()
-    hourFinish = models.TimeField()
+    hourFinish = models.TimeField(blank=True, null=True)
     idMachineFK = models.ForeignKey(Machine, related_name="machineReleaseMachine", on_delete=models.CASCADE)
     idAssociateFK = models.ForeignKey(User, related_name="userReleaseMachine", on_delete=models.CASCADE)
 

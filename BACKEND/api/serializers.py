@@ -37,11 +37,12 @@ class typeAssocienteTable(serializers.ModelSerializer):
     class Meta: 
         many = True
         model = typeAssociente
-        fields = '__all__' 
+        fields = ['type'] 
 
 class AssociateTable(serializers.ModelSerializer):
 
     idAssociateFK = UserTable(read_only=True)
+    type = typeAssocienteTable(read_only=True)
 
     class Meta: 
         many = True

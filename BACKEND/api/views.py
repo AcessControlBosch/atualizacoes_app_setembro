@@ -75,7 +75,7 @@ class ApprenticeAPI(APIView):
             return Response(serializer.data)
 
         else:
-            apprentice = Apprentice.objects.get(id=pk)
+            apprentice = Apprentice.objects.get(idApprenticeFK=pk)
             serializer = ApprenticeTable(apprentice)
             return Response(serializer.data)
             
@@ -146,7 +146,7 @@ class AssociateAPI(APIView):
             return Response(serializer.data)
 
         else:
-            associateResult = Associate.objects.get(id=pk)
+            associateResult = Associate.objects.get(idAssociateFK=pk)
             serializer = AssociateTable(associateResult)
             return Response(serializer.data)
 
